@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script>
+    <style>
+        body{
+            background-color: gray;
+        }
+        canvas{
+            background-color: white;
+            
+        }
+    </style>
+</head>
+<body>
+    <!-- <h1>Alumno: Jose Eduardo Quirarte Arce</h1> -->
+    <canvas id="myCanvas" width="500" height="500" style="border:1px solid grey"></canvas>
+    <script type="text/javascript">
+        const myCanvas = document.getElementById("myCanvas");
+        const ctx = myCanvas.getContext("2d");
+
+
+        ctx.fillStyle = "rgb(200,128,221,0.6)";
+        ctx.fillRect(20,20,100,100)
+        ctx.fillStyle = "#2deedf";
+        ctx.fillRect(100,100,100,100)
+        ctx.fillStyle = "black";
+        ctx.fillRect(180,180,100,100)
+
+
+    </script>
+</body>
+</html>
