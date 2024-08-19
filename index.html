@@ -115,13 +115,22 @@
         ctx.stroke();
 
         // mitad circulo
-        
         ctx.beginPath();
-        ctx.moveTo(200, 300);
-        ctx.bezierCurveTo(200, 400, 300,400, 300, 300);
-        ctx.fillStyle = "orange";
+        ctx.strokeStyle = "black";
+        
+        ctx.lineWidth = 1
+        ctx.arc(80, 310, 60, 0.9, 0.7 * Math.PI);
+        ctx.fillStyle = "blue";
         ctx.fill();
         ctx.stroke();
+
+        /*ctx.beginPath();
+        ctx.moveTo(200, 300);
+        ctx.bezierCurveTo(200, 380, 300,380, 300, 300);
+        ctx.fillStyle = "orange";
+        ctx.fill();
+        ctx.stroke();*/
+        
         
 
 
