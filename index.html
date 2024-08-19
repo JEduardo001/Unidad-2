@@ -29,8 +29,61 @@
         ctx.fillRect(20,20,100,100)
         ctx.fillStyle = "#2deedf";
         ctx.fillRect(100,100,100,100)
-        ctx.fillStyle = "black";
+        ctx.fillStyle = "green";
         ctx.fillRect(180,180,100,100)
+
+        ctx.beginPath();
+        ctx.moveTo(370,270);
+        ctx.lineTo(270, 270);
+        ctx.lineTo(270, 370);
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.moveTo(370, 270);
+        ctx.lineTo(370, 370);
+        ctx.lineTo(270, 370);
+        ctx.stroke();
+
+        // piramide
+        ctx.beginPath();
+        ctx.lineWidth = 5
+        ctx.strokeStyle = "red";
+        ctx.moveTo(400, 180);
+        ctx.lineTo(300, 250);
+        ctx.lineTo(300, 450);
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.moveTo(300, 450);
+        ctx.lineTo(400, 180);
+        ctx.stroke();
+
+        //cuadro
+        ctx.beginPath();
+        ctx.strokeStyle = "red";
+        ctx.moveTo(350, 450);
+        ctx.lineTo(350, 350);
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.strokeStyle = "red";
+        ctx.moveTo(350, 450);
+        ctx.lineTo(450, 450);
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.strokeStyle = "red";
+        ctx.moveTo(350, 350);
+        ctx.lineTo(450, 350);
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.strokeStyle = "red";
+        ctx.moveTo(450, 450);
+        ctx.lineTo(450, 350);
+        ctx.stroke();
+
+
 
 
     </script>
