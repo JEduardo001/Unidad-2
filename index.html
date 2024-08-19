@@ -25,63 +25,104 @@
         const ctx = myCanvas.getContext("2d");
 
 
-        ctx.fillStyle = "rgb(200,128,221,0.6)";
+        /*ctx.fillStyle = "rgb(200,128,221,0.6)";
         ctx.fillRect(20,20,100,100)
         ctx.fillStyle = "#2deedf";
         ctx.fillRect(100,100,100,100)
         ctx.fillStyle = "green";
-        ctx.fillRect(180,180,100,100)
+        ctx.fillRect(180,180,100,100)*/
 
+        //cuadro lineas negras
         ctx.beginPath();
-        ctx.moveTo(370,270);
-        ctx.lineTo(270, 270);
-        ctx.lineTo(270, 370);
+        ctx.moveTo(100,20);
+        ctx.lineTo(20, 20);
+        ctx.lineTo(20, 100);
         ctx.stroke();
 
         ctx.beginPath();
-        ctx.moveTo(370, 270);
-        ctx.lineTo(370, 370);
-        ctx.lineTo(270, 370);
+        ctx.moveTo(100, 20);
+        ctx.lineTo(100, 100);
+        ctx.lineTo(20, 100);
+        ctx.stroke();
+
+        // cuadro contorno negro
+        ctx.fillStyle = "black";
+        ctx.fillRect(50,50,100,100)
+
+        
+        // cuadro contorno rojo
+        ctx.fillStyle = "red";
+        ctx.fillRect(100,100,100,100)
+
+       
+
+        //cuadro lineas negras
+        ctx.beginPath();
+        ctx.moveTo(100,20);
+        ctx.lineTo(20, 20);
+        ctx.lineTo(20, 100);
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.moveTo(100, 20);
+        ctx.lineTo(100, 100);
+        ctx.lineTo(20, 100);
+        ctx.stroke();
+
+        //cuadro lineas amarillas
+        ctx.beginPath();
+        ctx.moveTo(150,250);
+        ctx.lineTo(150, 150);
+        ctx.lineTo(250, 150);
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.moveTo(250, 150);
+        ctx.lineTo(250, 250);
+        ctx.lineTo(150, 250);
         ctx.stroke();
 
         // piramide
         ctx.beginPath();
-        ctx.lineWidth = 5
-        ctx.strokeStyle = "red";
-        ctx.moveTo(400, 180);
-        ctx.lineTo(300, 250);
-        ctx.lineTo(300, 450);
+        ctx.lineWidth = 1
+        ctx.strokeStyle = "blue";
+        ctx.moveTo(380, 80);
+        ctx.lineTo(300, 150);
+        ctx.lineTo(450, 150);
+        ctx.fillStyle = "orange";
+        ctx.fill();
         ctx.stroke();
 
         ctx.beginPath();
-        ctx.moveTo(300, 450);
-        ctx.lineTo(400, 180);
+        ctx.moveTo(450, 150);
+        ctx.lineTo(380, 80);
         ctx.stroke();
 
-        //cuadro
+        // circulo naranja
         ctx.beginPath();
-        ctx.strokeStyle = "red";
-        ctx.moveTo(350, 450);
-        ctx.lineTo(350, 350);
+        ctx.strokeStyle = "black";
+        ctx.lineWidth = 1
+        ctx.arc(80, 350, 50, 0, 2 * Math.PI);
+        ctx.fillStyle = "orange";
+        ctx.fill();
         ctx.stroke();
 
+        //circulo sin relleno
         ctx.beginPath();
-        ctx.strokeStyle = "red";
-        ctx.moveTo(350, 450);
-        ctx.lineTo(450, 450);
+        ctx.strokeStyle = "black";
+        ctx.lineWidth = 1
+        ctx.arc(130, 350, 50, 0, 2 * Math.PI);
         ctx.stroke();
 
+        // mitad circulo
+        
         ctx.beginPath();
-        ctx.strokeStyle = "red";
-        ctx.moveTo(350, 350);
-        ctx.lineTo(450, 350);
+        ctx.moveTo(200, 300);
+        ctx.bezierCurveTo(200, 400, 300,400, 300, 300);
+        ctx.fillStyle = "orange";
+        ctx.fill();
         ctx.stroke();
-
-        ctx.beginPath();
-        ctx.strokeStyle = "red";
-        ctx.moveTo(450, 450);
-        ctx.lineTo(450, 350);
-        ctx.stroke();
+        
 
 
 
