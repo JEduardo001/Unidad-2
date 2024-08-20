@@ -82,21 +82,48 @@
         ctx.lineTo(150, 250);
         ctx.stroke();
 
+       
+
         // piramide
         ctx.beginPath();
-        ctx.lineWidth = 1
-        ctx.strokeStyle = "blue";
-        ctx.moveTo(380, 80);
-        ctx.lineTo(300, 150);
-        ctx.lineTo(450, 150);
-        ctx.fillStyle = "orange";
-        ctx.fill();
+        ctx.lineWidth = 5
+        ctx.strokeStyle = "red";
+        ctx.moveTo(400, 180);
+        ctx.lineTo(300, 250);
+        ctx.lineTo(300, 450);
         ctx.stroke();
 
         ctx.beginPath();
-        ctx.moveTo(450, 150);
-        ctx.lineTo(380, 80);
+        ctx.moveTo(300, 450);
+        ctx.lineTo(400, 180);
         ctx.stroke();
+
+
+        // cuadro lineas rojas
+        ctx.beginPath();
+        ctx.strokeStyle = "red";
+        ctx.moveTo(350, 450);
+        ctx.lineTo(350, 350);
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.strokeStyle = "red";
+        ctx.moveTo(350, 450);
+        ctx.lineTo(450, 450);
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.strokeStyle = "red";
+        ctx.moveTo(350, 350);
+        ctx.lineTo(450, 350);
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.strokeStyle = "red";
+        ctx.moveTo(450, 450);
+        ctx.lineTo(450, 350);
+        ctx.stroke();
+
 
         // circulo naranja
         ctx.beginPath();
@@ -124,14 +151,37 @@
         ctx.fill();
         ctx.stroke();
 
-        /*ctx.beginPath();
-        ctx.moveTo(200, 300);
-        ctx.bezierCurveTo(200, 380, 300,380, 300, 300);
-        ctx.fillStyle = "orange";
-        ctx.fill();
-        ctx.stroke();*/
+
+
+        ctx.font = "20px Georgia";
+        ctx.fillText("Hello World!", 200, 50);
+        ctx.font = "30px Verdana";
         
+        ctx.font = "20px Georgia";
+        ctx.strokeText("Hola mundo!", 200, 80);
+
+        /*var img = new Image();
+        img.src = "calabaza.png";
+        ctx.drawImage(img,0,0);
+
         
+        gradiante
+        const grd = ctx.createLinearGradient(500,350,20,20);
+        grd.addColorStop(0, "black");
+        grd.addColorStop(1, "red");
+
+        ctx.fillStyle = grd;
+        ctx.fillRect(180,180,200,200)
+
+
+         Create Radial
+        const grd2 = ctx.createRadialGradient(75, 50, 5, 90, 60, 100);
+        grd2.addColorStop(0, "red");
+        grd2.addColorStop(1, "white");
+
+         Draw a filled Rectangle
+        ctx.fillStyle = grd2;
+        ctx.fillRect(10, 10, 150, 100);*/
 
 
 
