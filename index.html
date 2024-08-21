@@ -33,7 +33,7 @@
         ctx.fillRect(180,180,100,100)*/
 
         //cuadro lineas negras
-        ctx.beginPath();
+       /* ctx.beginPath();
         ctx.moveTo(100,20);
         ctx.lineTo(20, 20);
         ctx.lineTo(20, 100);
@@ -162,26 +162,65 @@
 
         var img = new Image();
         img.src = "calabaza.png";
-        ctx.drawImage(img,300,200);
+        ctx.drawImage(img,300,200);*/
 
         
         //gradiante
-        const grd = ctx.createLinearGradient(500,350,20,20);
+       /* const grd = ctx.createLinearGradient(500,350,20,20);
         grd.addColorStop(0, "black");
         grd.addColorStop(1, "red");
 
         ctx.fillStyle = grd;
-        ctx.fillRect(180,180,200,200)
+        ctx.fillRect(180,180,200,200)*/
 
 
         //Create Radial
-        const grd2 = ctx.createRadialGradient(175, 200, 100, 250, 260, 220);
+       /* const grd2 = ctx.createRadialGradient(175, 200, 100, 250, 260, 220);
         grd2.addColorStop(0, "yellow");
-        grd2.addColorStop(1, "green");
+        grd2.addColorStop(1, "green");*/
         
 
-        ctx.fillStyle = grd2;
-        ctx.fillRect(175, 100, 350, 200);
+        /*ctx.fillStyle = grd2;
+        ctx.fillRect(175, 100, 350, 200);*/
+
+        document.getElementById("myCanvas").addEventListener("click",function(e){
+            console.log("hola")
+            console.log(e)
+
+            ctx.beginPath();
+            ctx.strokeStyle = "black";
+            ctx.lineWidth = 1
+            ctx.arc(e.x, e.y, 50, 0, 2 * Math.PI);
+            ctx.fillStyle = "rgb(200,128,221,0.6)";
+            ctx.fill();
+            ctx.stroke();
+
+        })
+
+        //color aleatorio
+
+        document.getElementById("myCanvas").addEventListener("click",function(e){
+            console.log("hola")
+            console.log(e)
+            
+            ctx.beginPath();
+            ctx.strokeStyle = "black";
+            ctx.lineWidth = 1
+            ctx.arc(e.x, e.y, 50, 0, 2 * Math.PI);
+            ctx.fillStyle = "rgb(200,128,221,0.6)";
+            ctx.fill();
+            ctx.stroke();
+
+        })
+
+        /*document.getElementById("myCanvas").addEventListener("mouseout",function(e){
+            console.log("hola")
+            console.log(e)
+
+        })*/
+        
+
+
 
 
 
