@@ -183,7 +183,7 @@
         /*ctx.fillStyle = grd2;
         ctx.fillRect(175, 100, 350, 200);*/
 
-        document.getElementById("myCanvas").addEventListener("click",function(e){
+       /* document.getElementById("myCanvas").addEventListener("mousedown",function(e){
             console.log("hola")
             console.log(e)
 
@@ -195,19 +195,28 @@
             ctx.fill();
             ctx.stroke();
 
-        })
+          
+
+        })*/
 
         //color aleatorio
 
         document.getElementById("myCanvas").addEventListener("click",function(e){
-            console.log("hola")
             console.log(e)
-            
+            var randomColor = Math.floor(Math.random()*16777215).toString(16);
+            console.log(Math.floor(Math.random()*255))
+
+            var color1 = Math.floor(Math.random()*255);
+            var color2 = Math.floor(Math.random()*255);
+            var color3 = Math.floor(Math.random()*255);
+
+
             ctx.beginPath();
             ctx.strokeStyle = "black";
             ctx.lineWidth = 1
             ctx.arc(e.x, e.y, 50, 0, 2 * Math.PI);
-            ctx.fillStyle = "rgb(200,128,221,0.6)";
+            ctx.fillStyle = "rgb("+color1+","+color2+","+color3+""+",0.6)";
+
             ctx.fill();
             ctx.stroke();
 
