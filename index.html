@@ -222,38 +222,45 @@
 
         })*/
         var figura=0;
+        var color1 = Math.floor(Math.random()*255);
+        var color2 = Math.floor(Math.random()*255);
+        var color3 = Math.floor(Math.random()*255);
 
         document.getElementById("myCanvas").addEventListener("click",function(e){
-            console.log(e)
-            var randomColor = Math.floor(Math.random()*16777215).toString(16);
-            console.log(Math.floor(Math.random()*255))
 
-            var color1 = Math.floor(Math.random()*255);
-            var color2 = Math.floor(Math.random()*255);
-            var color3 = Math.floor(Math.random()*255);
-
-
+            
             if(figura==0){
                 ctx.beginPath();
                 ctx.strokeStyle = "black";
                 ctx.lineWidth = 1
                 ctx.arc(e.x, e.y, 50, 0, 2 * Math.PI);
                 ctx.fillStyle = "rgb("+color1+","+color2+","+color3+""+",0.6)";
-    
                 ctx.fill();
                 ctx.stroke();
-                figura=1;
             }else{
-                ctx.fillStyle = "green";
-                ctx.fillRect(180,180,100,100)
-                figura=0;
+                ctx.fillStyle = "rgb("+color1+","+color2+","+color3+""+",0.6)";
+                ctx.fillRect(e.x-55,e.y-55,100,100)
             }
+          
+
+            document.getElementById("myCanvas").addEventListener("mouseout",function(e){
+              console.log("hsaliii")
+              if(figura==0){
+                figura=1;
+              }else{
+                figura=0;
+              }  
+              color1 = Math.floor(Math.random()*255);
+              color2 = Math.floor(Math.random()*255);
+              color3 = Math.floor(Math.random()*255);
+
+            })
            
 
         })
 
 
-        document.getElementById("myCanvas").addEventListener("mousedown",function(e){
+       /* document.getElementById("myCanvas").addEventListener("mousedown",function(e){
             console.log("hola")
             console.log(e)
 
@@ -267,7 +274,7 @@
 
           
 
-        })
+        })*/
 
         /*document.getElementById("myCanvas").addEventListener("mouseout",function(e){
             console.log("hola")
