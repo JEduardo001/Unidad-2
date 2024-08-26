@@ -222,10 +222,28 @@
 
         })*/
 
+        var presionado=false;
         addEventListener("mousemove", (e) => {
 
-            ctx.fillStyle = "green";
-            ctx.fillRect(e.x,e.y,5,5);
+            if(presionado){
+                ctx.beginPath();
+                ctx.arc(e.x, e.y, 3, 0, 2 * Math.PI);
+                ctx.fillStyle = "rgb(0,0,0,0.6)";
+                ctx.fill();
+                ctx.stroke();
+                console.log("es true"+presionado)
+            }
+
+            addEventListener("mouseup", (event) => {
+                presionado=false;
+                console.log(presionado)
+            });
+    
+            addEventListener("mousedown", (event) => {
+               presionado=true;
+               console.log(presionado)
+            });
+
         });
 
        
