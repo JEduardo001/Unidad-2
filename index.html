@@ -221,6 +221,15 @@
             ctx.stroke();
 
         })*/
+
+        addEventListener("mousemove", (e) => {
+
+            ctx.fillStyle = "green";
+            ctx.fillRect(e.x,e.y,5,5);
+        });
+
+       
+
         var figura=0;
         var color1 = Math.floor(Math.random()*255);
         var color2 = Math.floor(Math.random()*255);
