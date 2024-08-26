@@ -15,12 +15,61 @@
             background-color: white;
             
         }
+        /*#cuadrado {
+            width: 50px;
+            height: 50px;
+            background-color: red;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }*/
     </style>
 </head>
 <body>
+    <div id="cuadrado"></div>
+
     <!-- <h1>Alumno: Jose Eduardo Quirarte Arce</h1> -->
     <canvas id="myCanvas" width="500" height="500" style="border:1px solid grey"></canvas>
     <script type="text/javascript">
+
+
+        /*let cuadrado = document.getElementById('cuadrado');
+        let posX = 0;
+        let velocidad = 2;
+        let arriba=false
+        let abajo=false
+        let derecha=false
+        let izquierda=false
+
+
+        function animar() {
+            posX += velocidad;
+
+            if(arriba){
+                y--;
+            }
+            if(abajo){
+                y++;
+            }
+            if(derecha){
+                x++;
+            }
+            if(izquierda){
+                x--;
+            }
+
+            cuadrado.style.transform = `translateX(${x}px)`; 
+            cuadrado.style.transform = `translateY(${y}px)`; 
+
+            if (posX < window.innerWidth - cuadrado.clientWidth) {
+                requestAnimationFrame(animar); 
+            }
+        }
+
+        requestAnimationFrame(animar);*/
+
+
+
         const myCanvas = document.getElementById("myCanvas");
         const ctx = myCanvas.getContext("2d");
 
@@ -221,6 +270,93 @@
             ctx.stroke();
 
         })*/
+        var x=50,y=50;
+        var color1 = Math.floor(Math.random()*255);
+        var color2 = Math.floor(Math.random()*255);
+        var color3 = Math.floor(Math.random()*255);
+
+        ctx.fillStyle =  "rgb("+color1+","+color2+","+color3+""+",1)";;
+        ctx.fillRect(x,y,50,50)
+        addEventListener("keydown", (event) => {
+
+            ctx.fillStyle =  "white";
+            ctx.fillRect(x,y,50,50)
+
+            if(event.keyCode==87 || event.keyCode==83 || event.keyCode==68 || event.keyCode==65){
+                color1 = Math.floor(Math.random()*255);
+                color2 = Math.floor(Math.random()*255);
+                color3 = Math.floor(Math.random()*255);
+
+            }
+
+            //console.log(event.keyCode)
+            switch(event.keyCode){
+                case 87:
+                    //arriba=true;
+                    y-=20
+                   /* if(y-20<0){
+                        y=500;
+                    }else{
+                        y-=20
+                    }*/
+                break;
+                case 83:
+                    //abajo=true;
+                    y+=20
+                    /*if(y+20>500){
+                        y=0;
+                    }else{
+                        y+=20
+                    }*/
+
+                break;
+                case 68:
+                    //derecha=true;
+                    x+=20;
+                    /*if(x+20>500){
+                        x=0;
+                    }else{
+                        x+=20
+                    }*/
+
+                break;
+                case 65:
+                    //izquierda=true;
+                    x-=20;
+                    /*if(x-20<0){
+                        x=500;
+                    }else{
+                        x-=20
+                    }*/
+
+                break;
+
+            }
+           
+            ctx.fillStyle =  "rgb("+color1+","+color2+","+color3+""+",1)";
+            ctx.fillRect(x,y,50,50)
+        });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         var presionado=false;
         addEventListener("mousemove", (e) => {
@@ -248,11 +384,26 @@
 
        
 
-        var figura=0;
-        var color1 = Math.floor(Math.random()*255);
-        var color2 = Math.floor(Math.random()*255);
-        var color3 = Math.floor(Math.random()*255);
 
+        (function () {
+            var requestAnimationFrame =
+              window.requestAnimationFrame ||
+              window.mozRequestAnimationFrame ||
+              window.webkitRequestAnimationFrame ||
+              window.msRequestAnimationFrame;
+            window.requestAnimationFrame = requestAnimationFrame;
+
+            console.log("fdfffffffffffff")
+        })();
+          
+    
+       
+
+
+
+
+
+        var figura=0;
         document.getElementById("myCanvas").addEventListener("click",function(e){
 
             
@@ -316,5 +467,7 @@
 
 
     </script>
+
+    <h1 id="tx">sfdfsdsd</h1>
 </body>
 </html>
