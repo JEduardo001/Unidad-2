@@ -23,7 +23,7 @@
 
 
         //cuerpo, piramide
-        ctx.beginPath();
+       /* ctx.beginPath();
         ctx.lineWidth = 5
         ctx.moveTo(80, 400);
         ctx.lineTo(420, 400);
@@ -152,14 +152,59 @@
         ctx.arc(270, 280, 60, 0.9, 0.7 * Math.PI);
         ctx.fillStyle = "black";
         ctx.fill();
-        ctx.stroke();
-
-      
-       
+        ctx.stroke();*/
 
 
 
+        //cielo
+        ctx.fillStyle = "#a3f5ff";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        //campo
+        ctx.fillStyle = '#32CD32'; 
+        ctx.fillRect(0, canvas.height / 2, canvas.width, canvas.height / 2);
 
+        function montanas(x, y, width, height) {
+            // montana
+            ctx.beginPath();
+            ctx.moveTo(x, y);
+            ctx.lineTo(x + width / 2, y - height);
+            ctx.lineTo(x + width, y);
+            ctx.closePath();
+            ctx.fillStyle = '#8B4513'; 
+            ctx.fill();
+
+            // pico
+            ctx.beginPath();
+            ctx.moveTo(x + width / 4, y - height / 2);
+            ctx.lineTo(x + width / 2, y - height);
+            ctx.lineTo(x + (3 * width) / 4, y - height / 2);
+            ctx.closePath();
+            ctx.fillStyle = '#dadfe0'; 
+            ctx.fill();
+        }
+
+        montanas(50, canvas.height / 2, 250, 150);
+        montanas(300, canvas.height / 2, 300, 200);
+        montanas(650, canvas.height / 2, 200, 100);
+
+    
+        function arbol(x, y) {
+            ctx.fillStyle = '#8B4513';
+            ctx.fillRect(x, y, 20, 60);
+
+            ctx.beginPath();
+            ctx.moveTo(x - 30, y);
+            ctx.lineTo(x + 10, y - 70);
+            ctx.lineTo(x + 50, y);
+            ctx.closePath();
+            ctx.fillStyle = '#228B22'; 
+            ctx.fill();
+        }
+
+        arbol(100, canvas.height / 2 + 50);
+        arbol(200, canvas.height / 2 + 40);
+        arbol(300, canvas.height / 2 + 70);
+        arbol(600, canvas.height / 2 + 50);
 
 
     </script>
