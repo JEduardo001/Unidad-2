@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: gray;
+        }
+        canvas{
+            background-color: white;
+            
+        }
+    </style>
+</head>
+<body>
+
+    <canvas id="myCanvas" width="500" height="500" style="border:1px solid grey"></canvas>
+    <script type="text/javascript">
+        const canvas = document.getElementById("myCanvas");
+        const ctx = canvas.getContext("2d");
+
+
+        //cuerpo, piramide
+        ctx.beginPath();
+        ctx.lineWidth = 5
+        ctx.moveTo(80, 400);
+        ctx.lineTo(420, 400);
+        ctx.lineTo(250, 110);
+        ctx.fillStyle = "#fdb860";
+        ctx.fill();
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.moveTo(80, 400);
+        ctx.lineTo(250, 110);
+        ctx.stroke();
+
+
+        //brazo
+        ctx.fillStyle = "#fdb860";
+        ctx.fillRect(50,220,50,200)
+
+
+        //mano
+
+        ctx.beginPath();
+        ctx.strokeStyle = "black";
+        ctx.lineWidth = 1
+        ctx.arc(75, 220, 30, 0, 2 * Math.PI);
+        ctx.fillStyle = "#fdb860";
+        ctx.fill();
+        ctx.stroke();
+
+        //arma
+
+        ctx.fillStyle = "black";
+        ctx.fillRect(50,120,30,80)
+        ctx.stroke();
+
+        ctx.fillStyle = "black";
+        ctx.fillRect(50,120,100,30)
+        ctx.stroke();
+
+        ctx.fillStyle = "#b4b3b2";
+        ctx.fillRect(50,120,50,10)
+        ctx.stroke();
+
+      
+        //gatillo
+        ctx.beginPath();
+        ctx.strokeStyle = "black";
+        ctx.lineWidth = 4
+        ctx.arc(80, 150, 15, 0, 2 * Math.PI);
+        ctx.stroke();
+
+
+        //circulo
+        ctx.beginPath();
+        ctx.strokeStyle = "black";
+        ctx.lineWidth = 1
+        ctx.arc(80, 400, 30, 0, 2 * Math.PI);
+        ctx.fillStyle = "#fdb860";
+        ctx.fill();
+        ctx.stroke();
+
+
+
+
+        ctx.beginPath();
+        ctx.strokeStyle = "black";
+        ctx.lineWidth = 1
+        ctx.arc(250, 110, 30, 0, 2 * Math.PI);
+        ctx.fillStyle = "#39ddf1";
+        ctx.fill();
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.strokeStyle = "black";
+        ctx.lineWidth = 1
+        ctx.arc(420, 400, 30, 0, 2 * Math.PI);
+        ctx.fillStyle = "#fdb860";
+        ctx.fill();
+        ctx.stroke();
+
+
+        //ojos
+
+        ctx.beginPath();
+        ctx.strokeStyle = "black";
+        ctx.lineWidth = 1
+        ctx.arc(210, 250, 20, 0, 2 * Math.PI);
+        ctx.fillStyle = "White";
+        ctx.fill();
+        ctx.stroke();
+
+
+        ctx.beginPath();
+        ctx.strokeStyle = "black";
+        ctx.lineWidth = 1
+        ctx.arc(280, 250, 20, 0, 2 * Math.PI);
+        ctx.fillStyle = "#e56c6c";
+        ctx.fill();
+        ctx.stroke();
+
+
+        //pupilas
+
+        ctx.beginPath();
+        ctx.strokeStyle = "black";
+        ctx.lineWidth = 1
+        ctx.arc(211, 250, 5, 0, 2 * Math.PI);
+        ctx.fillStyle = "black";
+        ctx.fill();
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.strokeStyle = "black";
+        ctx.lineWidth = 1
+        ctx.arc(280, 250, 5, 0, 2 * Math.PI);
+        ctx.fillStyle = "black";
+        ctx.fill();
+        ctx.stroke();
+
+        //boca
+
+        ctx.beginPath();
+        ctx.strokeStyle = "black";
+        
+        ctx.lineWidth = 1
+        ctx.arc(270, 280, 60, 0.9, 0.7 * Math.PI);
+        ctx.fillStyle = "black";
+        ctx.fill();
+        ctx.stroke();
+
+      
+       
+
+
+
+
+
+
+    </script>
+
+    
+</body>
+</html>
