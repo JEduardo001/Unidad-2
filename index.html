@@ -26,36 +26,92 @@
 
         const myCanvas = document.getElementById("myCanvas");
         const ctx = myCanvas.getContext("2d");
+
+
+        class Rectangulo {
+
+            
+            constructor(x,y,alto, ancho,velocidad) {
+              this.x = x;
+              this.y = y;
+              this.alto = alto;
+              this.ancho = ancho;
+              this.velocidad = velocidad;
+
+            }
+           
+            comprobarColicionCuadro(){
+                if(x<=cuadro.x+50 && x>cuadro.x && y<=cuadro.y+50 && y>=cuadro.y 
+                    || x<=cuadro.x+50 && x>=cuadro.x && y+40<=cuadro.y+50 && y+40>=cuadro.y 
+                    || x+40>=cuadro.x && x+40<=cuadro.x+50 && y>=cuadro.y && y<=cuadro.y+50
+                    || x+40>=cuadro.x && x+40<=cuadro.x+50 && y+40>=cuadro.y && y+40<=cuadro.y+50){
+                    return true
+                }else{
+                    return false
+                }
+            }
+            genCuadro(){
+                cuadro.x=Math.floor(Math.random()*450);
+                cuadro.y=Math.floor(Math.random()*450);    
+               
+            }
+
+        }
         let arriba=false
         let abajo=false
         let derecha=false
         let izquierda=false
         var x=50,y=50;
+        var xC=100,yC=100;
+
         var color1 = Math.floor(Math.random()*255);
         var color2 = Math.floor(Math.random()*255);
         var color3 = Math.floor(Math.random()*255);
         var velocidad=5;
 
+        var cuadro = new Rectangulo(50,50,40,40,5)
 
-       // var xC=100,yC=100;
 
-       // genCuadro()
-       /* function genCuadro(){
-            ctx.fillStyle = "White";
-            ctx.fillRect(xC,yC,50,50)
-            xC=Math.floor(Math.random()*500);
-            xY=Math.floor(Math.random()*500);
+       
 
-            ctx.fillStyle = "black";
-            ctx.fillRect(xC,yC,50,50)
-        }*/
+        cuadro.genCuadro()
+      
+       
+        addEventListener("keydown", (event) => {
+
+       
+            console.log("adasdasdsdas")
+            if(event.keyCode==87 || event.keyCode==83 || event.keyCode==68 || event.keyCode==65 ){
+                arriba=false
+                abajo=false
+                derecha=false
+                izquierda=false
+   
+            }
+ 
+             //console.log(event.keyCode)
+             switch(event.keyCode){
+                case 32:
+                    velocidad+=4;
+                break;
+                case 87:
+                    arriba=true;  
+                break;
+                case 83:
+                    abajo=true;
+                break;
+                case 68:
+                    derecha=true;
+                break;
+                case 65:
+                    izquierda=true;
+                break;
+            }
+        });
 
         function animar() {
         
-           
-
-            ctx.fillStyle = "white";
-            ctx.fillRect(x,y,40,40)
+            
 
             if(arriba){
                 if(y-velocidad<-50){
@@ -86,102 +142,43 @@
 
                 }
             }
-            //comprobarColicionCuadro();
-            color1 = Math.floor(Math.random()*255);
-            color2 = Math.floor(Math.random()*255);
-            color3 = Math.floor(Math.random()*255);
-            ctx.fillStyle =  "rgb("+color1+","+color2+","+color3+""+",1)";;
-            ctx.fillRect(x,y,40,40)
-            requestAnimationFrame(animar); 
-
-            ctx.font = "20px Georgia";
-            ctx.fillText("Velocidad : "+velocidad, 200, 50);
-
-            
-        }
-
-        requestAnimationFrame(animar);
-
-       
-
-        /*function comprobarColicionCuadro(){
-            if(x<=xC+50 && x>xC && y<=yC+50 && y>=yC ){
-                genCuadro();
+            if(cuadro.comprobarColicionCuadro()){
+                cuadro.genCuadro();
                 console.log("choqueeeee")
             }
-        }*/
-
-       
-        addEventListener("keydown", (event) => {
-
-       
-            
-             if(event.keyCode==87 || event.keyCode==83 || event.keyCode==68 || event.keyCode==65 ){
-                arriba=false
-                abajo=false
-                derecha=false
-                izquierda=false
+            //comprobarColicionCuadro();
+           /* color1 = Math.floor(Math.random()*255);
+            color2 = Math.floor(Math.random()*255);
+            color3 = Math.floor(Math.random()*255);
+            ctx.fillStyle =  "rgb("+color1+","+color2+","+color3+""+",1)";*/
+           // ctx.fillRect(x,y,40,40)
    
-             }
- 
-             //console.log(event.keyCode)
-             switch(event.keyCode){
-                case 32:
-                    velocidad+=4;
-                break;
-                case 87:
-                     arriba=true;
-                     //y-=20
-                 /* if(y-20<0){
-                     //y-=20
-                     if(y-20<0){
-                         y=500;
-                     }else{
-                         y-=20
-                     }*/
-                     
-                break;
-                case 83:
-                     abajo=true;
-                     //y+=20
-                     /*if(y+20>500){
-                     //y+=20
-                     if(y+20>500){
-                         y=0;
-                     }else{
-                         y+=20
-                     }*/
-                     
- 
-                break;
-                case 68:
-                     derecha=true;
-                     //x+=20;
-                     /*if(x+20>500){
-                     //x+=20;
-                     if(x+20>500){
-                         x=0;
-                     }else{
-                         x+=20
-                     }*/
-                break;
-                case 65:
-                     izquierda=true;
-                    /* x-=20;
-                     if(x-20<0){
-                     //x-=20;
-                     if(x-20<0){
-                         x=500;
-                     }else{
-                         x-=20
-                     }*/
-                break;
-             }
-            /* ctx.fillStyle =  "rgb("+color1+","+color2+","+color3+""+",1)";
-             ctx.fillRect(x,y,50,50)*/
-        });
+        }
+
+        function Paint(){
 
 
+            ctx.fillStyle = "white";
+            ctx.fillRect(0,0,500,500);       
+            ctx.font = "20px Georgia";
+            ctx.fillStyle = "black";
+            ctx.fillText("Velocidad : "+velocidad, 200, 50);
+            ctx.fillRect(x,y,40,40)
+
+            ctx.fillStyle = "White";
+            ctx.fillRect(cuadro.x,cuadro.y,50,50)
+
+            ctx.fillStyle = "red";
+            ctx.fillRect(cuadro.x,cuadro.y,50,50)
+
+
+            animar();
+            requestAnimationFrame(Paint); 
+        }
+
+        requestAnimationFrame(Paint);
+
+        
 
         /*ctx.fillStyle = "rgb(200,128,221,0.6)";
         ctx.fillRect(20,20,100,100)
@@ -492,10 +489,10 @@
 
 
 
-
-
     </script>
 
+
+    
     <h1 id="tx">sfdfsdsd</h1>
 </body>
 </html>
