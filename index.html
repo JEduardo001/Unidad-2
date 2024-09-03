@@ -31,50 +31,55 @@
         class Rectangulo {
 
             
-            constructor(x,y,alto, ancho,velocidad) {
+            constructor(x,y,ancho, alto,velocidad) {
               this.x = x;
               this.y = y;
-              this.alto = alto;
               this.ancho = ancho;
+              this.alto = alto;
               this.velocidad = velocidad;
 
             }
            
             comprobarColicionCuadro(){
-                if(x<=cuadro.x+50 && x>cuadro.x && y<=cuadro.y+50 && y>=cuadro.y 
-                    || x<=cuadro.x+50 && x>=cuadro.x && y+40<=cuadro.y+50 && y+40>=cuadro.y 
-                    || x+40>=cuadro.x && x+40<=cuadro.x+50 && y>=cuadro.y && y<=cuadro.y+50
-                    || x+40>=cuadro.x && x+40<=cuadro.x+50 && y+40>=cuadro.y && y+40<=cuadro.y+50){
-                    return true
-                }else{
+                if(x<=cuadro.x+cuadro.ancho && x>cuadro.x && y<=cuadro.y+cuadro.alto && y>=cuadro.y 
+                    || x<=cuadro.x+cuadro.ancho && x>=cuadro.x && y+40<=cuadro.y+cuadro.alto && y+40>=cuadro.y 
+                    || x+40>=cuadro.x && x+40<=cuadro.x+cuadro.ancho && y>=cuadro.y && y<=cuadro.y+cuadro.alto
+                    || x+40>=cuadro.x && x+40<=cuadro.x+cuadro.ancho && y+40>=cuadro.y && y+40<=cuadro.y+cuadro.alto){
+                        console.log("choqe")
                     return false
+                }else{
+                    return true
                 }
             }
-            genCuadro(){
+           /* genCuadro(){
                 cuadro.x=Math.floor(Math.random()*450);
                 cuadro.y=Math.floor(Math.random()*450);    
                
-            }
+            }*/
 
         }
+
+
+
         let arriba=false
         let abajo=false
         let derecha=false
         let izquierda=false
+        let mover=true
         var x=50,y=50;
-        var xC=100,yC=100;
+       // var xC=100,yC=100;
 
         var color1 = Math.floor(Math.random()*255);
         var color2 = Math.floor(Math.random()*255);
         var color3 = Math.floor(Math.random()*255);
         var velocidad=5;
 
-        var cuadro = new Rectangulo(50,50,40,40,5)
+        var cuadro = new Rectangulo(100,300,250,40,5)
 
 
        
 
-        cuadro.genCuadro()
+       // cuadro.genCuadro()
       
        
         addEventListener("keydown", (event) => {
@@ -112,40 +117,44 @@
         function animar() {
         
             
-
-            if(arriba){
-                if(y-velocidad<-50){
-                    y=500;
-                }else{
-                    y-=velocidad;
-                }
-            }
-            if(abajo){
-                if(y+velocidad>500){
-                    y=-50;
-                }else{
-                    y+=velocidad;
-                }
-            }
-            if(derecha){
-                if(x+velocidad>500){
-                    x=-50;
-                }else{
-                    x+=velocidad;
-                }
-            }
-            if(izquierda){
-                if(x-velocidad<-50){
-                    x=500;
-                }else{
-                    x-=velocidad;
-
-                }
-            }
             if(cuadro.comprobarColicionCuadro()){
-                cuadro.genCuadro();
-                console.log("choqueeeee")
+                if(arriba){
+                    if(y-velocidad<-50){
+                        y=500;
+                    }else{
+                        y-=velocidad;
+                    }
+                }
+                if(abajo){
+                    if(y+velocidad>500){
+                        y=-50;
+                    }else{
+                        y+=velocidad;
+                    }
+                }
+                if(derecha){
+                    if(x+velocidad>500){
+                        x=-50;
+                    }else{
+                        x+=velocidad;
+                    }
+                }
+                if(izquierda){
+                    if(x-velocidad<-50){
+                        x=500;
+                    }else{
+                        x-=velocidad;
+    
+                    }
+                }
+            }else{
+                console.log("colicion")
             }
+           
+            /*if(cuadro.comprobarColicionCuadro()){
+               // cuadro.genCuadro();
+                console.log("choqueeeee")
+            }*/
             //comprobarColicionCuadro();
            /* color1 = Math.floor(Math.random()*255);
             color2 = Math.floor(Math.random()*255);
@@ -166,10 +175,10 @@
             ctx.fillRect(x,y,40,40)
 
             ctx.fillStyle = "White";
-            ctx.fillRect(cuadro.x,cuadro.y,50,50)
+            ctx.fillRect(cuadro.x,cuadro.y,cuadro.ancho,cuadro.alto)
 
             ctx.fillStyle = "red";
-            ctx.fillRect(cuadro.x,cuadro.y,50,50)
+            ctx.fillRect(cuadro.x,cuadro.y,cuadro.ancho,cuadro.alto)
 
 
             animar();
