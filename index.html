@@ -30,7 +30,7 @@
 
         class Rectangulo {
 
-            
+      
             constructor(x,y,ancho, alto,velocidad) {
               this.x = x;
               this.y = y;
@@ -40,13 +40,12 @@
 
             }
            
-            comprobarColicionCuadro(){
-                if(x<=cuadro.x+cuadro.ancho && x>cuadro.x && y<=cuadro.y+cuadro.alto && y>=cuadro.y 
-                    || x<=cuadro.x+cuadro.ancho && x>=cuadro.x && y+40<=cuadro.y+cuadro.alto && y+40>=cuadro.y 
-                    || x+40>=cuadro.x && x+40<=cuadro.x+cuadro.ancho && y>=cuadro.y && y<=cuadro.y+cuadro.alto
-                    || x+40>=cuadro.x && x+40<=cuadro.x+cuadro.ancho && y+40>=cuadro.y && y+40<=cuadro.y+cuadro.alto){
-                        console.log("choqe")
-                    return false
+            comprobarColicionRectangulo(x,y){
+                if(x<rectangulo.x+rectangulo.ancho && x>rectangulo.x && y<rectangulo.y+rectangulo.alto && y>rectangulo.y 
+                    || x<rectangulo.x+rectangulo.ancho && x>rectangulo.x && y+40<rectangulo.y+rectangulo.alto && y+40>rectangulo.y 
+                    || x+40>rectangulo.x && x+40<rectangulo.x+rectangulo.ancho && y>rectangulo.y && y<rectangulo.y+rectangulo.alto
+                    || x+40>rectangulo.x && x+40<rectangulo.x+rectangulo.ancho && y+40>rectangulo.y && y+40<rectangulo.y+rectangulo.alto){
+                      return false
                 }else{
                     return true
                 }
@@ -56,6 +55,39 @@
                 cuadro.y=Math.floor(Math.random()*450);    
                
             }*/
+
+        }
+
+        class Cuadrito {
+
+      
+            constructor(x,y,ancho, alto) {
+              this.x = x;
+              this.y = y;
+              this.ancho = ancho;
+              this.alto = alto;
+
+            }
+           
+            comprobarColicionCuadrito(){
+                if(x<cuadrito.x+cuadrito.ancho && x>cuadrito.x && y<cuadrito.y+cuadrito.alto && y>cuadrito.y 
+                    || x<cuadrito.x+cuadrito.ancho && x>cuadrito.x && y+40<cuadrito.y+cuadrito.alto && y+40>cuadrito.y 
+                    || x+40>cuadrito.x && x+40<cuadrito.x+cuadrito.ancho && y>cuadrito.y && y<cuadrito.y+cuadrito.alto
+                    || x+40>cuadrito.x && x+40<cuadrito.x+cuadrito.ancho && y+40>cuadrito.y && y+40<cuadrito.y+cuadrito.alto
+                    || x+20>cuadrito.x && x+20<cuadrito.x+cuadrito.ancho && y+20>cuadrito.y && y+20<cuadrito.y+cuadrito.alto
+                    ){
+                      return true
+                }else{
+                    return false
+                }
+            }
+
+            genCuadro(){
+                cuadrito.x= Math.floor(Math.random()*470);
+                cuadrito.y= Math.floor(Math.random()*470);
+
+            }
+          
 
         }
 
@@ -74,7 +106,8 @@
         var color3 = Math.floor(Math.random()*255);
         var velocidad=5;
 
-        var cuadro = new Rectangulo(100,300,250,40,5)
+        var rectangulo = new Rectangulo(100,300,250,40,5)
+        var cuadrito = new Cuadrito(150,150,20,20)
 
 
        
@@ -85,7 +118,6 @@
         addEventListener("keydown", (event) => {
 
        
-            console.log("adasdasdsdas")
             if(event.keyCode==87 || event.keyCode==83 || event.keyCode==68 || event.keyCode==65 ){
                 arriba=false
                 abajo=false
@@ -117,29 +149,43 @@
         function animar() {
         
             
-            if(cuadro.comprobarColicionCuadro()){
-                if(arriba){
+          
+            
+            if(arriba){
+                if(rectangulo.comprobarColicionRectangulo(x,y-1)){
                     if(y-velocidad<-50){
                         y=500;
                     }else{
                         y-=velocidad;
                     }
                 }
-                if(abajo){
+                
+            }
+            if(abajo){
+
+                if(rectangulo.comprobarColicionRectangulo(x,y+1)){
                     if(y+velocidad>500){
                         y=-50;
                     }else{
                         y+=velocidad;
                     }
                 }
-                if(derecha){
+                
+            }
+            if(derecha){
+
+                if(rectangulo.comprobarColicionRectangulo(x+1,y)){
                     if(x+velocidad>500){
                         x=-50;
                     }else{
                         x+=velocidad;
                     }
                 }
-                if(izquierda){
+                
+            }
+            if(izquierda){
+
+                if(rectangulo.comprobarColicionRectangulo(x-1,y)){
                     if(x-velocidad<-50){
                         x=500;
                     }else{
@@ -147,14 +193,14 @@
     
                     }
                 }
-            }else{
-                console.log("colicion")
+                
             }
+
+            
            
-            /*if(cuadro.comprobarColicionCuadro()){
-               // cuadro.genCuadro();
-                console.log("choqueeeee")
-            }*/
+            if(cuadrito.comprobarColicionCuadrito()){
+                cuadrito.genCuadro();
+            }
             //comprobarColicionCuadro();
            /* color1 = Math.floor(Math.random()*255);
             color2 = Math.floor(Math.random()*255);
@@ -175,10 +221,17 @@
             ctx.fillRect(x,y,40,40)
 
             ctx.fillStyle = "White";
-            ctx.fillRect(cuadro.x,cuadro.y,cuadro.ancho,cuadro.alto)
+            ctx.fillRect(rectangulo.x,rectangulo.y,rectangulo.ancho,rectangulo.alto)
 
             ctx.fillStyle = "red";
-            ctx.fillRect(cuadro.x,cuadro.y,cuadro.ancho,cuadro.alto)
+            ctx.fillRect(rectangulo.x,rectangulo.y,rectangulo.ancho,rectangulo.alto)
+
+
+            ctx.fillStyle = "White";
+            ctx.fillRect(cuadrito.x,cuadrito.y,cuadrito.ancho,cuadrito.alto)
+
+            ctx.fillStyle = "yellow";
+            ctx.fillRect(cuadrito.x,cuadrito.y,cuadrito.ancho,cuadrito.alto)
 
 
             animar();
