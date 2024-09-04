@@ -31,30 +31,26 @@
         class Rectangulo {
 
       
-            constructor(x,y,ancho, alto,velocidad) {
+            constructor(x,y,ancho, alto) {
               this.x = x;
               this.y = y;
               this.ancho = ancho;
               this.alto = alto;
-              this.velocidad = velocidad;
 
             }
            
             comprobarColicionRectangulo(x,y){
-                if(x<rectangulo.x+rectangulo.ancho && x>rectangulo.x && y<rectangulo.y+rectangulo.alto && y>rectangulo.y 
-                    || x<rectangulo.x+rectangulo.ancho && x>rectangulo.x && y+40<rectangulo.y+rectangulo.alto && y+40>rectangulo.y 
-                    || x+40>rectangulo.x && x+40<rectangulo.x+rectangulo.ancho && y>rectangulo.y && y<rectangulo.y+rectangulo.alto
-                    || x+40>rectangulo.x && x+40<rectangulo.x+rectangulo.ancho && y+40>rectangulo.y && y+40<rectangulo.y+rectangulo.alto){
-                      return false
+                if(x<this.x+this.ancho && x>this.x && y<this.y+this.alto && y>this.y 
+                    || x<this.x+this.ancho && x>this.x && y+40<this.y+this.alto && y+40>this.y 
+                    || x+40>this.x && x+40<this.x+this.ancho && y>this.y && y<this.y+this.alto
+                    || x+40>this.x && x+40<this.x+this.ancho && y+40>this.y && y+40<this.y+this.alto
+                    || x+20>this.x && x+20<this.x+this.ancho && y+20>this.y && y+20<this.y+this.alto){
+                      return true
                 }else{
-                    return true
+                    return false
                 }
             }
-           /* genCuadro(){
-                cuadro.x=Math.floor(Math.random()*450);
-                cuadro.y=Math.floor(Math.random()*450);    
-               
-            }*/
+
 
         }
 
@@ -76,6 +72,7 @@
                     || x+40>cuadrito.x && x+40<cuadrito.x+cuadrito.ancho && y+40>cuadrito.y && y+40<cuadrito.y+cuadrito.alto
                     || x+20>cuadrito.x && x+20<cuadrito.x+cuadrito.ancho && y+20>cuadrito.y && y+20<cuadrito.y+cuadrito.alto
                     ){
+                        score++;
                       return true
                 }else{
                     return false
@@ -83,12 +80,13 @@
             }
 
             genCuadro(){
-                cuadrito.x= Math.floor(Math.random()*470);
-                cuadrito.y= Math.floor(Math.random()*470);
-
+                var xGenerada = Math.floor(Math.random()*470);
+                var yGenerada = Math.floor(Math.random()*470);
+                if(!comprobarCoordenadas(xGenerada,yGenerada)){
+                    cuadrito.x= xGenerada
+                    cuadrito.y= yGenerada
+                }
             }
-          
-
         }
 
 
@@ -105,10 +103,13 @@
         var color2 = Math.floor(Math.random()*255);
         var color3 = Math.floor(Math.random()*255);
         var velocidad=5;
+        var pausa=false;
+        var score=0;
 
-        var rectangulo = new Rectangulo(100,300,250,40,5)
-        var cuadrito = new Cuadrito(150,150,20,20)
-
+       // var rectangulo = new Rectangulo(100,300,250,30,5)
+        var cuadrito = new Cuadrito(150,150,30,30)
+        //muros
+        var muros =[new Rectangulo(100,300,250,30), new Rectangulo(100,400,250,30), new Rectangulo(130,100,250,30)]
 
        
 
@@ -125,11 +126,16 @@
                 izquierda=false
    
             }
+          
  
              //console.log(event.keyCode)
              switch(event.keyCode){
                 case 32:
-                    velocidad+=4;
+                   if(pausa){
+                        pausa=false
+                   }else{
+                        pausa=true
+                   }
                 break;
                 case 87:
                     arriba=true;  
@@ -149,10 +155,10 @@
         function animar() {
         
             
-          
-            
+          if(!pausa){
             if(arriba){
-                if(rectangulo.comprobarColicionRectangulo(x,y-1)){
+
+                if(!comprobarColicion(x,y-1)){
                     if(y-velocidad<-50){
                         y=500;
                     }else{
@@ -163,7 +169,7 @@
             }
             if(abajo){
 
-                if(rectangulo.comprobarColicionRectangulo(x,y+1)){
+                if(!comprobarColicion(x,y+1)){
                     if(y+velocidad>500){
                         y=-50;
                     }else{
@@ -174,7 +180,7 @@
             }
             if(derecha){
 
-                if(rectangulo.comprobarColicionRectangulo(x+1,y)){
+                if(!comprobarColicion(x+1,y)){
                     if(x+velocidad>500){
                         x=-50;
                     }else{
@@ -185,7 +191,7 @@
             }
             if(izquierda){
 
-                if(rectangulo.comprobarColicionRectangulo(x-1,y)){
+                if(!comprobarColicion(x-1,y)){
                     if(x-velocidad<-50){
                         x=500;
                     }else{
@@ -196,6 +202,9 @@
                 
             }
 
+          }
+            
+           
             
            
             if(cuadrito.comprobarColicionCuadrito()){
@@ -210,21 +219,59 @@
    
         }
 
+        function comprobarColicion(x,y){
+            var choco=false
+            muros.forEach(function (muro, indice, array) {
+                if(muro.comprobarColicionRectangulo(x,y)){
+                    choco=true            
+                }
+            });
+
+            return choco
+        }
+
+
+        function comprobarCoordenadas(xGenerada,yGenerada){
+            var cuadritoEncimaDeMuro=false
+            muros.forEach(function (muro, indice, array) {
+                if(muro.comprobarColicionRectangulo(xGenerada,yGenerada)){
+                    cuadritoEncimaDeMuro=true            
+                }
+            });
+
+            return cuadritoEncimaDeMuro
+        }
+
         function Paint(){
 
 
-            ctx.fillStyle = "white";
-            ctx.fillRect(0,0,500,500);       
+            if(!pausa){
+                ctx.fillStyle = "white";
+                ctx.fillRect(0,0,500,500);  
+            }else{
+                ctx.fillStyle = "#c8cac6";
+                ctx.fillRect(0,0,500,500);  
+                ctx.font = "20px Georgia";
+                ctx.fillStyle = "black";
+                ctx.fillText("PAUSA : ", 180, 250);
+
+            }
+
+               
             ctx.font = "20px Georgia";
             ctx.fillStyle = "black";
-            ctx.fillText("Velocidad : "+velocidad, 200, 50);
+            ctx.fillText("SCORE : "+score, 200, 50);
             ctx.fillRect(x,y,40,40)
 
-            ctx.fillStyle = "White";
-            ctx.fillRect(rectangulo.x,rectangulo.y,rectangulo.ancho,rectangulo.alto)
+            muros.forEach(function (muro, indice, array) {
+                ctx.fillStyle = "White";
+                ctx.fillRect(muro.x,muro.y,muro.ancho,muro.alto)
+    
+                ctx.fillStyle = "red";
+                ctx.fillRect(muro.x,muro.y,muro.ancho,muro.alto)
+            });
 
-            ctx.fillStyle = "red";
-            ctx.fillRect(rectangulo.x,rectangulo.y,rectangulo.ancho,rectangulo.alto)
+           
 
 
             ctx.fillStyle = "White";
